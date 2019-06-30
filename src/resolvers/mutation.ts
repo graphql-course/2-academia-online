@@ -20,19 +20,7 @@ const mutation : IResolvers = {
                 database.cursos.push(itemCurso);
                 return itemCurso;
             }
-            
-            return {
-                id: '-1',
-                title: `El curso ya existe con este titulo`,
-                description: '',
-                clases: -1,
-                time: 0.0,
-                level: 'TODOS',
-                logo: '',
-                path: '',
-                teacher: '',
-                reviews: []
-            };
+            return noCompletado(1);
         },
         modificarCurso(__:void, { curso }): any {
             const elemeentoExiste = _.findIndex(database.cursos, function(o) {
@@ -45,18 +33,7 @@ const mutation : IResolvers = {
                 return curso;
             }
 
-            return {
-                id: '-1',
-                title: `El curso no existe en la base de datos`,
-                description: '',
-                clases: -1,
-                time: 0.0,
-                level: 'TODOS',
-                logo: '',
-                path: '',
-                teacher: '',
-                reviews: []
-            };
+            return noCompletado(2);
         },
         eliminarCurso(__:void, { id }): any {
             const borraCurso = _.remove(database.cursos, function(curso) {
@@ -64,18 +41,7 @@ const mutation : IResolvers = {
             });
 
             if (borraCurso[0] === undefined) {
-                return {
-                    id: '-1',
-                    title: `El curso no se puede borrar porque no se ha encontrado ningún curso con ese ID`,
-                    description: '',
-                    clases: -1,
-                    time: 0.0,
-                    level: 'TODOS',
-                    logo: '',
-                    path: '',
-                    teacher: '',
-                    reviews: []
-                };
+                return noCompletado(3);
             }
             return borraCurso[0];
         }
@@ -83,3 +49,37 @@ const mutation : IResolvers = {
 }
 
 export default mutation;
+
+function noCompletado(operacion: number) {
+    let title = '';
+    switch(operacion) {
+        case 1: { 
+            title = 'El curso ya existe con este titulo';
+            break; 
+         } 
+         case 2: { 
+            title = 'El curso no existe en la base de datos';
+            break; 
+         } 
+         case 3: { 
+            title = 'El curso no se puede borrar porque no se ha encontrado ningún curso con ese ID'; 
+            break; 
+         } 
+         default: { 
+            //statements; 
+            break; 
+         } 
+    }
+    return {
+        id: '-1',
+        title,
+        description: '',
+        clases: -1,
+        time: 0.0,
+        level: 'TODOS',
+        logo: '',
+        path: '',
+        teacher: '',
+        reviews: []
+    };
+}
