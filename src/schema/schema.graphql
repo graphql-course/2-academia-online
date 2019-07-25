@@ -20,7 +20,10 @@ type Mutation {
     eliminarCurso(id: ID!): Curso!
 }
 
-"Información de entrada para gestionar los datos de un curso, como puede ser añadir y/o modificar los datos de un curso"
+"""
+Información de entrada para gestionar los datos de un curso, como puede ser añadir 
+y/o modificar los datos de un curso
+"""
 input CursoInput {
     id: ID
     title: String!
@@ -46,6 +49,7 @@ type Estudiante {
     courses: [Curso!]!
 }
 
+"Información de un curso"
 type Curso {
     "Identificador del curso"
     id: ID!
