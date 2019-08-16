@@ -24,7 +24,7 @@ app.get('/', expressPlayGround ({
 
 const httpServer = createServer(app);
 
-const PORT = 5200;
+const PORT = process.env.PORT || 5200;
 
 httpServer.listen(
     {
