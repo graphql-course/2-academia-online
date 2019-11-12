@@ -33,6 +33,8 @@
     "@types/graphql": "^14.2.2",
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/lodash": "^4.14.135",
-    "@types/node": "^12.0.10"
+    "@types/node": "^12.0.10",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.5.0"
   }
 }
