@@ -1,0 +1,15 @@
+"""
+Información de entrada para gestionar los datos de un curso, como puede ser añadir 
+y/o modificar los datos de un curso
+"""
+input CursoInput {
+    id: ID
+    title: String!
+    description: String!
+    clases: Int!
+    time: Float!
+    logo: String!
+    level: Nivel=TODOS
+    path: String!
+    teacher: String!
+}
