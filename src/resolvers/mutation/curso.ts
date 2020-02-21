@@ -1,7 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 import _ from 'lodash';
-import { database } from '../data/data.store';
-const mutation : IResolvers = {
+import { database } from './../../data/data.store';
+const mutationCurso : IResolvers = {
     Mutation: {
         cursoNuevo(__:void, { curso }): any {
             const itemCurso = {
@@ -48,7 +48,7 @@ const mutation : IResolvers = {
     }
 }
 
-export default mutation;
+export default mutationCurso;
 
 function noCompletado(operacion: number) {
     let title = '';
