@@ -19,6 +19,7 @@
     "graphql": "^14.4.1",
     "graphql-depth-limit": "^1.1.0",
     "graphql-import-node": "0.0.4",
+    "graphql-merge-resolvers": "^1.1.12",
     "graphql-playground-middleware-express": "^1.7.12",
     "graphql-tools": "^4.0.5",
     "http": "0.0.0",
