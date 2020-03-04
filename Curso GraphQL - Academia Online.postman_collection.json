@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "879b12d1-4cca-4a7e-9b41-8c05a3acdf5e",
+		"name": "Curso GraphQL - Academia Online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query",
+			"item": [
+				{
+					"name": "Estudiantes",
+					"item": [
+						{
+							"name": "Lista de Alumnos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\n    students {\n        id\n        name\n        email\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos a obtener la lista de alumnos de la academia"
+							},
+							"response": []
+						},
+						{
+							"name": "Información Alumno",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\n    student(id: \"11\") {\n        id\n        name\n        email\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos a obtener la información de un alumno haciendo uso de los argumentos / variables en línea"
+							},
+							"response": []
+						},
+						{
+							"name": "Información Alumno Query Variables",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getStudent($id: ID!){\n    student(id: $id) {\n        id\n        name\n        email\n    }\n}",
+										"variables": "{\n\t\"id\": \"5\"\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos a obtener la información de un alumno haciendo uso de las Query Variables (GraphQL Variables)"
+							},
+							"response": []
+						},
+						{
+							"name": "Información Alumno Query Variables  Fragments Alias",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getStudent($id: ID!, $id2: ID!){\n    dos: student(id: $id) {\n       ...datosEstudiante\n    }\n    tres: student(id: $id2) {\n       ...datosEstudiante\n    }\n}\n\nfragment datosEstudiante on Student {\n    id\n    name\n    email\n}",
+										"variables": "{\n\t\"id\": \"2\",\n\t\"id2\": \"3\"\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos a obtener la información de varios alumnos con diferentes consultas, haciendo uso de los alias para evitar conflictos y con Fragments"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cursos",
+					"item": [
+						{
+							"name": "Lista de Cursos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\n    courses {\n        id\n        title\n        description\n        clases\n        logo\n        level\n        path\n        time\n        students {\n            id\n            name\n            email\n        }\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos a obtener la lista de los cursos de la academia"
+							},
+							"response": []
+						},
+						{
+							"name": "Información de un curso",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "{\n    course(id: \"2\") {\n        id\n        title\n        description\n        clases\n        logo\n        level\n        path\n        time\n        students {\n            id\n            name\n            email\n        }\n    }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos obtener la información de un curso seleccionado"
+							},
+							"response": []
+						},
+						{
+							"name": "Información de un curso con Query Variables",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getCourse($id: ID!){\n    course(id: $id) {\n        id\n        title\n        clases\n        logo\n        level\n        path\n        time\n        students {\n            id\n            name\n            email\n        }\n    }\n}",
+										"variables": "{\n\t\"id\": \"4\"\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos obtener la información de un curso seleccionado mediante el uso de Query Variables"
+							},
+							"response": []
+						},
+						{
+							"name": "Información de un curso con Query Variables Fragments Alias",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getCourses($idCursoUno: ID!, $idCursoDos: ID!){\n    cursoUno: course(id: $idCursoUno) {\n        ...cursoFragment\n    }\n    cursoDos: course(id: $idCursoDos) {\n        ...cursoFragment\n    }\n}\n\nfragment cursoFragment on Course {\n    id\n    title\n    clases\n    logo\n    level\n    path\n    time\n    students {\n        id\n        name\n        email\n    }\n}",
+										"variables": "{\n\t\"idCursoUno\": \"1\",\n\t\"idCursoDos\": \"2\"\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Vamos obtener la información de un curso seleccionado mediante el uso de Query Variables y dando uso a los Fragments y añadiendo más de una consulta con su alias correspondiente para evitar el conflicto por usar diferentes argumentos"
+							},
+							"response": []
+						},
+						{
+							"name": "Información de un curso Directiva Include",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getCourses($idCursoUno: ID!, $idCursoDos: ID!, $include: Boolean!){\n    cursoUno: course(id: $idCursoUno) {\n        ...cursoFragment\n    }\n    cursoDos: course(id: $idCursoDos) {\n        ...cursoFragment\n    }\n}\n\nfragment cursoFragment on Course {\n    id\n    title @include(if: $include)\n    clases @include(if: $include)\n    logo\n    level\n    path\n    time\n    students {\n        id\n        name\n        email\n    }\n}",
+										"variables": "{\n\t\"idCursoUno\": \"1\",\n\t\"idCursoDos\": \"2\",\n\t\"include\": false\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Obtenemos la información de un curso haciendo uso de la directiva include para añadir o no, ciertas propiedades del resultado según lo necesitemos o no"
+							},
+							"response": []
+						},
+						{
+							"name": "Información de un curso Directiva Skip",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query getCourses($idCursoUno: ID!, $idCursoDos: ID!, $skip: Boolean!){\n    cursoUno: course(id: $idCursoUno) {\n        ...cursoFragment\n    }\n    cursoDos: course(id: $idCursoDos) {\n        ...cursoFragment\n    }\n}\n\nfragment cursoFragment on Course {\n    id\n    title @skip(if: $skip)\n    clases @skip(if: $skip)\n    logo\n    level\n    path\n    time\n    students {\n        id\n        name\n        email\n    }\n}",
+										"variables": "{\n\t\"idCursoUno\": \"1\",\n\t\"idCursoDos\": \"2\",\n\t\"skip\": false\n}"
+									}
+								},
+								"url": {
+									"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+									"protocol": "https",
+									"host": [
+										"courses-online-graphql",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"graphql"
+									]
+								},
+								"description": "Obtenemos la información de un curso haciendo uso de la directiva skip para añadir o no, ciertas propiedades del resultado según lo necesitemos o no"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Mutation",
+			"item": [
+				{
+					"name": "Insertar un curso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation anadirCurso($course: CourseInput!){\n    addCourse(course: $course) {\n        id\n        title\n        description\n    }\n}",
+								"variables": "{\n\t\"course\": {\n\t\t\"title\": \"Curso de GraphQL\",\n\t\t\"description\": \"Curso para aprender lo necesario de GraphQL\",\n\t\t\"clases\": 200,\n\t\t\"time\": 20.7,\n\t\t\"logo\": \"\",\n\t\t\"path\": \"\",\n\t\t\"teacher\": \"Anartz Mugika Ledo\",\n\t\t\"level\": \"ALL\"\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+							"protocol": "https",
+							"host": [
+								"courses-online-graphql",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Operación para añadir un curso"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un curso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation actualizarCurso($course: CourseInput!){\n    updateCourse(course: $course) {\n        id\n        title\n        description\n        clases\n        time\n        logo\n        path\n    }\n}",
+								"variables": "{\n\t\"course\": {\n\t\t\"id\": \"5\",\n\t\t\"title\": \"Curso de GraphQL\",\n\t\t\"description\": \"Curso para aprender lo necesario de GraphQL\",\n\t\t\"clases\": 240,\n\t\t\"time\": 30,\n\t\t\"logo\": \"33333333\",\n\t\t\"path\": \"33333333\",\n\t\t\"teacher\": \"Anartz Mugika Ledo\",\n\t\t\"level\": \"EXPERT\"\n\t}\n}"
+							}
+						},
+						"url": {
+							"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+							"protocol": "https",
+							"host": [
+								"courses-online-graphql",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Operación para cambiar la información de un curso que hemos seleccionado mediante el ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar curso",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation borrarCurso($course: ID!){\n    deleteCourse(id: $course) {\n        id\n        title\n        description\n        clases\n        time\n        logo\n        path\n    }\n}",
+								"variables": "{\n\t\"course\": \"4\"\n}"
+							}
+						},
+						"url": {
+							"raw": "https://courses-online-graphql.herokuapp.com/graphql",
+							"protocol": "https",
+							"host": [
+								"courses-online-graphql",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Eliminamos el curso seleccionado mediante el ID"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
