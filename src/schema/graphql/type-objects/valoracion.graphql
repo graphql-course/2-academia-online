@@ -1,0 +1,11 @@
+"Valoraciones de los cursos"
+type Valoracion {
+    "Identificador de la valoración"
+    id: ID!
+    "Nombre del que añáde la valoración"
+    name: String!
+    "Puntuación de 0 a 5"
+    points: Float!
+    "Comentario de la valoración"
+    comment: String
+}
