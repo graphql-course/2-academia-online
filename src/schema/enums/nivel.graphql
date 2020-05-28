@@ -1,0 +1,10 @@
+
+
+"Nivel de los cursos"
+enum Nivel {
+    TODOS
+    NOVATOS
+    INTERMEDIO
+    EXPERTO
+}
+

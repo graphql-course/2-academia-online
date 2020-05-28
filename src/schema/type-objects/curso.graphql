@@ -1,0 +1,25 @@
+"Información de un curso"
+type Curso {
+    "Identificador del curso"
+    id: ID!
+    "Título del curso"
+    title: String!
+    "Descripción del curso"
+    description: String!
+    "Número de clases del curso"
+    clases: Int!
+    "Tiempo en horas del curso"
+    time: Float!
+    "Logotipo del curso"
+    logo: String!
+    "Nivel del curso. El valor lo obtenemos de enum Nivel"
+    level: Nivel!
+    "Path del curso, en el que corresponde a la URL Principal de Udemy"
+    path: String!
+    "Nombre y apellidos del profesor"
+    teacher: String!
+    "Lista de estudiantes inscritos en el curso"
+    students: [Estudiante]
+    "Lista de valoraciones sobre el curso"
+    reviews: [Valoracion!]!
+}

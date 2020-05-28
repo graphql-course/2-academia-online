@@ -1,0 +1,11 @@
+"Consultas de la información de los estudiantes y cursos. Solo lectura"
+type Query {
+    "Lista de los estudiantes de la academia"
+    estudiantes: [Estudiante!]!
+    "Información del estudiante de la academia seleccionado por ID"
+    estudiante(id: ID!): Estudiante!
+    "Lista de los cursos de la academia"
+    cursos: [Curso!]!
+    "Información del curso de la academia seleccionado por ID"
+    curso(curso: ID!): Curso!
+}
